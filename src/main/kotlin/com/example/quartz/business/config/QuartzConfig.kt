@@ -1,6 +1,7 @@
 package com.example.quartz.business.config
 
 import com.example.quartz.business.ActivateBuyerQuartz
+import com.example.quartz.business.JPAActivateBuyerQuartz
 import org.jetbrains.annotations.TestOnly
 import org.quartz.*
 import org.quartz.impl.StdSchedulerFactory
@@ -18,6 +19,11 @@ class QuartzConfig(
             add(
                 JobBuilder.newJob(ActivateBuyerQuartz::class.java)
                     .withIdentity("ActivateBuyerQuartz")
+                    .build()
+            )
+            add(
+                JobBuilder.newJob(JPAActivateBuyerQuartz::class.java)
+                    .withIdentity("JPAActivateBuyerQuartz")
                     .build()
             )
         }.apply {
